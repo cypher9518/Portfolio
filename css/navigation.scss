@@ -1,0 +1,82 @@
+@keyframes navigation-slide-in {
+	0% {
+		transform: translateX(calc(4vw + 100%));
+	}
+
+	100% {
+		transform: translateX(0);
+	}
+}
+
+@keyframes navigation-slide-up {
+	0% {
+		transform: translateY(calc(var(--spacing-medium) * 2 + 100%));
+	}
+
+	100% {
+		transform: translateX(0);
+	}
+}
+
+#navigation {
+	position: fixed;
+	right: var(--spacing-medium);
+	top: 50%;
+	transform: translateY(-50%);
+	z-index: 1;
+
+	display: flex;
+	flex-direction: column;
+	gap: var(--spacing-small);
+
+	a {
+		background-color: var(--text-color);
+
+		display: block;
+		width: 0.5rem;
+		height: 0.5rem;
+
+		font-size: 0;
+
+		border-radius: 50%;
+		transition: opacity 0.25s var(--easing), background-color 0.25s var(--easing);
+		opacity: 0.25;
+
+		&.active {
+			opacity: 1;
+			background: var(--link-color);
+		}
+	}
+}
+
+// Animate
+html.js #navigation a {
+	animation: navigation-slide-in var(--scrollspy-duration) var(--easing);
+	animation-play-state: paused;
+	animation-fill-mode: backwards;
+}
+
+html.js.loaded #navigation a {
+	animation-play-state: running;
+}
+
+@for $i from 1 through 10 {
+	html.js #navigation a:nth-child(#{$i}) {
+		animation-delay: #{4 + $i * 0.1 - 0.1}s;
+	}
+}
+
+@media (orientation: portrait) {
+	#navigation {
+		right: auto;
+		top: auto;
+		left: 50%;
+		bottom: var(--spacing-medium);
+		transform: translateX(-50%);
+		flex-direction: row;
+	}
+
+	html.js #navigation a {
+		animation-name: navigation-slide-up;
+	}
+}

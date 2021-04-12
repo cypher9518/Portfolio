@@ -1,0 +1,35 @@
+@mixin list-inline {
+	margin-left: 0;
+	list-style: none;
+
+	li {
+		display: inline-block;
+		margin: 0 var(--spacing-medium) 0 0;
+	}
+}
+
+@mixin card {
+	position: relative;
+	padding: var(--spacing-large);
+	box-shadow: 0 0.2rem 1rem rgba(0, 0, 0, 0.25);
+	border-radius: 0.5rem;
+	backdrop-filter: blur(20px);
+}
+
+@mixin threed-tilt {
+	--threed-tilt-x: 0;
+	--threed-tilt-y: 0;
+
+	transform-origin: 50% 50%;
+	transform: perspective(300px) rotateX(0deg) rotateY(0deg);
+	transition: transform 0.5s var(--easing);
+	transform-style: preserve-3d;
+
+	&.threed-tilt-active {
+		transform: perspective(300px) rotateX(calc(8deg * var(--threed-tilt-y))) rotateY(calc(8deg * var(--threed-tilt-x) * -1));
+	}
+
+	> * {
+		transform: translateZ(50px);
+	}
+}

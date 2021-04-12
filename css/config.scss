@@ -1,0 +1,21 @@
+:root {
+	--body-bg: #020024 radial-gradient(circle farthest-corner at center top, #00d4ff, #020024 100%) no-repeat 50% 0;
+	--text-color: white;
+	--accent-color: #f90;
+	--link-color: var(--accent-color);
+
+	--text-font: Comfortaa;
+	--heading-font: Montserrat; // Montserrat, Raleway, Ubuntu, Quicksand, "Josefin Sans", Cabin
+	--heading-weight: bold;
+
+	--site-width-min: 85vw;
+	--site-width-max: 1360px;
+	--site-width: min(var(--site-width-min), var(--site-width-max));
+	--site-padding: calc((100vw - var(--site-width)) / 2);
+
+	--spacing-small: 0.5rem;
+	--spacing-medium: 1.25rem;
+	--spacing-large: 2.5rem;
+
+	--easing: cubic-bezier(0.16, 1, 0.3, 1);
+}

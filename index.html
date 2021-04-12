@@ -1,0 +1,176 @@
+<!doctype html>
+
+<html lang="en-GB" class="no-js">
+
+	<head>
+
+		<meta charset="utf8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<title>Himanshu Singh</title>
+		<meta name="description" content="Web Developer and Blender Enthusiast from Sweden">
+
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link rel="preconnect" href="https://unpkg.com">
+		<link rel="preconnect" href="https://cdnjs.cloudflare.com">
+		<link rel="stylesheet" href="css/app.css">
+		<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+
+		<script>
+			// JS class
+			document.documentElement.classList.remove('no-js');
+			document.documentElement.classList.add('js');
+
+			// Random theme on load
+			/* const themes = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
+			const theme = themes[Math.floor(Math.random() * themes.length)];
+
+			document.documentElement.classList.add('theme-' + theme); */
+
+			// Actually no
+			document.documentElement.classList.add('theme-i');
+		</script>
+
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-1823084-2"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'UA-1823084-2');
+		</script>
+
+	</head>
+
+	<body>
+
+		<a data-toggle-bg3d class="icon-pause">Toggle background animation</a>
+
+		<figure id="bg"></figure>
+
+		<nav id="themes">
+			<a data-set-theme="a">Theme A</a>
+			<a data-set-theme="b">Theme B</a>
+			<a data-set-theme="c">Theme C</a>
+			<a data-set-theme="d">Theme D</a>
+			<a data-set-theme="e">Theme E</a>
+			<a data-set-theme="f">Theme F</a>
+			<a data-set-theme="g">Theme G</a>
+			<a data-set-theme="h">Theme H</a>
+			<a data-set-theme="i">Theme I</a>
+			<a data-set-theme="j">Theme J</a>
+		</nav>
+
+		<nav id="navigation" data-highlight-visible>
+			<a href="#about">About</a>
+			<a href="#work">Work</a>
+			<a href="#contact">Contact</a>
+			<a href="#end">The End</a>
+		</nav>
+
+		<main>
+
+			<section id="about" data-auto-theme="i" data-camera-pos='{"x":0.08587540781719324,"y":0.4493196965917127,"z":0.48457949209771856,"rx":-0.6751290685950414,"ry":0.3919465215545036,"rz":0.29680014653731734}'>
+
+				<header>
+
+					<h1>Hi! I'm Cypher</h1>
+
+					<p>I'm a Web Developer , Gamer and Photographer.</p>
+
+				</header>
+
+				<ul>
+					<li><a href="https://github.com/cypher9518" target="_blank" rel="noopener" class="icon-github">GitHub</a></li>
+				</ul>
+
+			</section>
+
+			<section id="work" data-auto-theme="g" data-camera-pos='{"x":1.6264026631799302,"y":1.2948229057672256,"z":5.986972351580601,"rx":-0.8697633991850208,"ry":-0.1868166573247362,"rz":-0.21659510346244576}'>
+
+				<header>
+
+					<h2>Work</h2>
+
+					<p>Check out some of my <a href="https://github.com/cypher9518/" target="_blank" rel="noopener">GitHub projects</a>.</p>
+
+				</header>
+
+				<div>
+
+					<article>
+
+						<h3>Whatsapp Automation</h3>
+
+						<p>Automate the functionalities of WhatsApp</p>
+
+						<ul>
+							<li><a href="https://github.com/cypher9518/Whatsapp-Automaion" target="_blank" rel="noopener" class="icon-github">GitHub</a></li>
+						</ul>
+
+					</article>
+
+					<article class="card">
+
+						<h3>Youtube Downloader</h3>
+
+						<p>Save a youtube video along with .mp3 format </p>
+
+						<ul>
+							<li><a href="https://github.com/cypher9518/Youtube-Downloader" target="_blank" rel="noopener" class="icon-github">GitHub</a></li>
+						</ul>
+
+					</article>
+
+				</div>
+
+			</section>
+
+
+			<section id="contact" data-auto-theme="h" data-camera-pos='{"x":1.2928716579423913,"y":0.8710942112817563,"z":14.08160151207296,"rx":-2.254564420415036,"ry":-0.9679905485695725,"rz":-2.3508026523748886}'>
+
+				<header>
+
+					<h2>Contact</h2>
+
+					<p>You can <a href="mailto:andreas.himanshu9518@gmail.com?subject=From%20website">write me an e-mail</a> if you like.<br>Or find me online:</p>
+
+				</header>
+
+				<ul>
+					<li><a href="https://github.com/cypher9518/" target="_blank" rel="noopener" class="icon-github">GitHub</a></li>
+					
+				</ul>
+
+			</section>
+
+			<section id="end" data-auto-theme="b" data-camera-pos='{"x":-0.10642392173444505,"y":0.1798439109093774,"z":19.628076613444538,"rx":-2.7613242127834337,"ry":-0.5228655690770228,"rz":-2.9445739092095806}'>
+
+				<header>
+
+					<h2>The End</h2>
+
+					<p>This site was built using <a href="https://www.blender.org/" target="_blank" rel="noopener">Blender</a>, <a href="https://threejs.org/" target="_blank" rel="noopener">ThreeJS</a>, <a href="https://github.com/tweenjs/tween.js/" target="_blank" rel="noopener">TweenJS</a>, <a href="https://splitting.js.org/" target="_blank" rel="noopener">SplittingJS</a> and the code you see if you “view source”.</p>
+					<p>Special thanks to  Andreas Lagerkvist</p>
+				</header>
+
+				<nav>
+					<a href="#about" class="icon-up">Go back to the top</a>
+				</nav>
+
+			</section>
+
+		</main>
+
+		<aside id="performance-notice">
+			<p>Your framerate is low.<br>You may want to pause the 3D background using the button in the top left corner.</p>
+		</aside>
+
+		<script src="https://unpkg.com/splitting@1.0.6/dist/splitting.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/16.3.5/Tween.min.js"></script>
+		<script type="module" src="js/app.js"></script>
+
+	</body>
+
+</html>

@@ -1,0 +1,15 @@
+html.loading body {
+	&::before {
+		content: "Loading...";
+		color: var(--text-color);
+		font-size: 4vw;
+		position: fixed;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+	}
+
+	* {
+		visibility: hidden;
+	}
+}

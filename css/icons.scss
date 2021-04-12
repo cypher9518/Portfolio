@@ -1,0 +1,43 @@
+@font-face {
+	font-family: "icons";
+	src: url("../assets/icons.woff2") format("woff2");
+	font-weight: normal;
+	font-style: normal;
+	font-display: block;
+}
+
+[class*="icon-"]:before {
+	font-family: "icons";
+	font-style: normal;
+	font-weight: normal;
+	speak: never;
+	display: inline-block;
+	text-decoration: inherit;
+	font-variant: normal;
+	text-transform: none;
+	margin-right: .5em;
+}
+
+.icon-globe:before { content: "\e800"; }
+.icon-down:before { content: "\e801"; }
+.icon-left:before { content: "\e802"; }
+.icon-right:before { content: "\e803"; }
+.icon-up:before { content: "\e804"; }
+.icon-play:before { content: "\e805"; }
+.icon-pause:before { content: "\e806"; }
+.icon-github:before { content: "\f09b"; }
+.icon-stackoverflow:before { content: "\f16c"; }
+
+a[class*="icon-"] {
+	&::before {
+		display: inline-block;
+		color: var(--link-color);
+		text-decoration: none;
+		transform: scale(1);
+		transition: transform 0.5s var(--easing);
+	}
+
+	&:hover::before {
+		transform: scale(1.5);
+	}
+}

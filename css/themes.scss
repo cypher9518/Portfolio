@@ -1,0 +1,87 @@
+// "#020024 radial-gradient(circle farthest-corner at center top, #00d4ff, #020024 100%) no-repeat 50% 0"
+$themes: (
+	"a": ("#020024", "white", "#f90"),
+	"b": ("#FFF6E5", "#3E454C", "#FF7F66"),
+	"c": ("#D95284", "#F2F2F2", "#F285AD"),
+	"d": ("#2C3E50", "#ECF0F1", "#E74C3C"),
+	"e": ("#E74C3C", "#ECF0F1", "#2C3E50"),
+	"f": ("#395D73", "#FCF5E5", "#FACCD5"),
+	"g": ("#212226", "white", "#71D99E"),
+	"h": ("#16193B", "#ADD5F7", "#4E7AC7"),
+	"i": ("#072026", "#D99F6C", "#D95032"),
+	"j": ("#403C3B", "#F1F2E9", "#A6988D")
+);
+
+@each $name, $colors in $themes {
+	html.theme-#{$name} {
+		--body-bg: #{nth($colors, 1)};
+		--text-color: #{nth($colors, 2)};
+		--accent-color: #{nth($colors, 3)};
+	}
+
+	a[data-set-theme="#{$name}"] {
+		background: #{nth($colors, 1)};
+	}
+}
+
+// Theme switcher
+@keyframes themes-slide-in {
+	0% {
+		transform: translateY(calc((var(--spacing-medium) * 2 + 100%) * -1));
+	}
+
+	100% {
+		transform: translateY(0);
+	}
+}
+
+#themes {
+	position: fixed;
+	right: var(--spacing-medium);
+	top: var(--spacing-medium);
+	z-index: 1;
+
+	display: flex;
+	align-items: center;
+	gap: var(--spacing-small);
+
+	a {
+		display: block;
+		width: 1rem;
+		height: 1rem;
+
+		font-size: 0;
+		opacity: 0.5;
+
+		border: 1px solid white;
+		border-radius: 50%;
+
+		transition: opacity 0.25s var(--easing);
+
+		&:hover {
+			opacity: 1;
+		}
+
+		&.active {
+			opacity: 1;
+			box-shadow: 0.1rem 0.1rem 0.25rem rgba(0, 0, 0, 0.25);
+		}
+	}
+}
+
+// Animate
+html.js #themes a {
+	animation: themes-slide-in var(--scrollspy-duration) var(--easing);
+	animation-play-state: paused;
+	animation-fill-mode: backwards;
+}
+
+html.js.loaded #themes a {
+	animation-play-state: running;
+}
+
+@for $i from 1 through 10 {
+	html.js #themes a:nth-child(#{$i}) {
+		animation-delay: #{3.5 + $i * 0.05 - 0.05}s;
+	}
+}

@@ -1,0 +1,31 @@
+:root {
+	--scrollspy-duration: 1.25s;
+}
+
+.splitting {
+	perspective: 300px;
+
+	.char {
+		transform: rotateX(90deg);
+		transform-origin: 50% bottom;
+		opacity: 0;
+	}
+}
+
+.in-view .splitting .char {
+	transform: rotateX(0);
+	opacity: 1;
+	transition: transform 1s ease, opacity 0.25s ease;
+	transition-delay: calc(0.1s * var(--char-index));
+}
+
+// Hide headings while splitting loads
+html.js h1,
+html.js h2 {
+	opacity: 0;
+}
+
+html.js h1.splitting,
+html.js h2.splitting {
+	opacity: 1;
+}

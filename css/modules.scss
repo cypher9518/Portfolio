@@ -1,0 +1,263 @@
+@mixin scrollspy-hide ($x: 0, $y: 2rem) {
+	transform: translate($x, $y);
+	opacity: 0;
+	transition: transform var(--scrollspy-duration) var(--easing), opacity var(--scrollspy-duration) var(--easing);
+}
+
+@mixin scrollspy-show {
+	transform: translate(0, 0);
+	opacity: 1;
+}
+
+section {
+	display: flex;
+	align-items: flex-start;
+	justify-content: center;
+	flex-direction: column;
+
+	padding: 15vh var(--site-padding);
+	min-height: 100vh;
+
+	header {
+		margin-bottom: var(--spacing-large);
+
+		p {
+			font-size: 1.2em;
+		}
+
+		> :last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	ul {
+		@include list-inline;
+	}
+}
+
+html.js section {
+	header p {
+		@include scrollspy-hide;
+
+		transition-delay: 1s;
+	}
+
+	&.in-view {
+		header p {
+			@include scrollspy-show;
+		}
+	}
+}
+
+// About & contact
+html.js #about,
+html.js #contact {
+	header p {
+		transition-delay: 1.5s;
+	}
+
+	ul li {
+		@include scrollspy-hide(2rem, 0);
+
+		transition-delay: 1.75s;
+
+		@for $i from 1 through 5 {
+			&:nth-child(#{$i}) {
+				transition-delay: #{1.75 + ($i * 0.1 - 0.1)}s;
+			}
+		}
+	}
+
+	&.in-view {
+		ul li {
+			@include scrollspy-show;
+		}
+	}
+}
+
+// Work
+#work {
+	article {
+		@include card;
+	}
+
+	> div {
+		display: grid;
+		gap: min(5vw, var(--spacing-large));
+		grid-auto-columns: 1fr;
+		perspective: 300px;
+
+		max-width: calc(100% + var(--site-padding) * 2);
+		padding: var(--spacing-large) var(--site-padding);
+		margin: calc(var(--spacing-large) * -1) calc(var(--site-padding) * -1);
+		overflow: auto;
+
+		> * {
+			grid-row: 1;
+		}
+	}
+}
+
+html.js #work {
+	article {
+		// @include threed-tilt;
+
+		opacity: 0;
+		transform-origin: 50% top;
+		transform: rotateX(-90deg);
+		transition: transform var(--scrollspy-duration) var(--easing), opacity var(--scrollspy-duration) var(--easing);
+	}
+
+	@for $i from 1 through 5 {
+		article:nth-child(#{$i}) {
+			transition-delay: #{1.5 + $i * 0.25 - 0.25}s;
+		}
+	}
+
+	&.in-view {
+		header p {
+			@include scrollspy-show;
+		}
+
+		article {
+			opacity: 1;
+			transform: rotateX(0);
+		}
+	}
+}
+
+// Play
+#play {
+	> div {
+		width: 100%;
+		display: flex;
+		gap: min(2vw, var(--spacing-large));
+
+		> * {
+			flex-grow: 1;
+		}
+	}
+
+	figure {
+		position: relative;
+		margin: 0;
+		overflow: hidden;
+		border-radius: 50%;
+		border: min(1vw, 1rem) solid white;
+		box-shadow: 0.25rem 0.25rem 0.75rem rgba(0, 0, 0, 0.25);
+
+		a {
+			cursor: zoom-in;
+		}
+
+		&::before {
+			display: block;
+			content: "";
+			padding-bottom: 100%;
+		}
+
+		img,
+		video {
+			position: absolute;
+			left: 0;
+			top: 0;
+			right: 0;
+			bottom: 0;
+
+			object-fit: cover;
+
+			width: 100%;
+			height: 100%;
+
+			transform: scale(1);
+			transition: transform 0.5s ease;
+			border-radius: 50%;
+
+			&:hover {
+				transform: scale(1.25);
+			}
+		}
+	}
+}
+
+html.js #play {
+	figure {
+		transform: scale(0);
+		transition: transform var(--scrollspy-duration) var(--easing);
+	}
+
+	@for $i from 1 through 10 {
+		figure:nth-child(#{$i}) {
+			transition-delay: #{1.5 + $i * 0.1 - 0.1}s;
+		}
+	}
+
+	&.in-view {
+		figure {
+			transform: scale(1);
+		}
+	}
+}
+
+// End
+html.js #end {
+	> nav {
+		@include scrollspy-hide;
+
+		transition-delay: 1.5s;
+	}
+
+	&.in-view > nav {
+		@include scrollspy-show;
+	}
+}
+
+// Performance notice
+#performance-notice {
+	--performance-notice-bottom: var(--spacing-large);
+
+	@media (orientation: landscape) {
+		--performance-notice-bottom: var(--spacing-medium);
+	}
+
+	padding: var(--spacing-medium);
+
+	font-size: 80%;
+	color: white;
+	text-align: center;
+
+	position: fixed;
+	left: 50%;
+	bottom: var(--performance-notice-bottom);
+	z-index: 99;
+
+	width: max-content;
+	max-width: 90%;
+
+	transform: translate(-50%, calc(100% + var(--performance-notice-bottom) + var(--spacing-medium)));
+	transition: transform 1s var(--easing);
+
+	border-radius: 0.5rem;
+
+	&::before {
+		background: var(--accent-color);
+		display: block;
+		content: "";
+		position: absolute;
+		left: 0;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		border-radius: 0.5rem;
+		z-index: -1;
+		opacity: 0.75;
+	}
+
+	p {
+		margin: 0;
+	}
+
+	&.active {
+		transform: translate(-50%, 0);
+	}
+}
